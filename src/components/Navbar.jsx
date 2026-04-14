@@ -3,14 +3,34 @@ import { useState, useCallback } from "react";
 
 const navItems = [
   {
+    name: "OPD Dashboard",
+    iconClass: "fa-solid fa-hospital",
+    path: "/opd-dashboard",
+  },
+  {
+    name: "Emergency",
+    iconClass: "fa-solid fa-truck-medical",
+    path: "/emergency-dashboard",
+  },
+  {
+    name: "CRM View",
+    iconClass: "fa-solid fa-calendar-plus",
+    path: "/CRM-view",
+  },
+  {
     name: "Consultation Form",
     iconClass: "fa-solid fa-stethoscope",
     path: "/consultationform",
   },
   {
     name: "Medical Record",
-    iconClass: "fa-solid fa-compass",
-    path: "/medicalrecord",
+    iconClass: "fa-solid fa-file-medical",
+    path: "/consultation/medicalrecord",
+  },
+  {
+    name: "Patient Summary",
+    iconClass: "fa-solid fa-user-injured",
+    path: "/consultation/patient-summary",
   },
 ];
 
