@@ -4,14 +4,34 @@ import { UsersRound } from 'lucide-react';
 
 const navItems = [
   {
+    name: "OPD Dashboard",
+    iconClass: "fa-solid fa-hospital",
+    path: "/opd-dashboard",
+  },
+  {
+    name: "Emergency",
+    iconClass: "fa-solid fa-truck-medical",
+    path: "/emergency-dashboard",
+  },
+  {
+    name: "CRM View",
+    iconClass: "fa-solid fa-calendar-plus",
+    path: "/CRM-view",
+  },
+  {
     name: "Consultation Form",
     iconClass: "fa-solid fa-stethoscope",
-    path: "/consultatioform",
+    path: "/consultationform",
   },
   {
     name: "Medical Record",
-    iconClass: "fa-solid fa-compass",
-    path: "/medicalrecord",
+    iconClass: "fa-solid fa-file-medical",
+    path: "/consultation/medicalrecord",
+  },
+  {
+    name: "Patient Summary",
+    iconClass: "fa-solid fa-user-injured",
+    path: "/consultation/patient-summary",
   },
   {
     name: "Patient Info",
@@ -31,9 +51,18 @@ export default function Navbar() {
   const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
   }, []);
-
+  const patient = {
+    initials: "NK",
+    name: "Nabila Khattab",
+    nameAr: "نبيلة خطاب عبدالسلام",
+    mrn: "F-80813",
+    gender: "Female",
+    age: 33,
+    department: "Internal Medicine",
+  };
   return (
     <>
+   
       {/* Mobile Top Bar */}
       <div className="lg:hidden sticky top-0 z-50 w-full h-16 bg-white/70 backdrop-blur-md border-b bg-[linear-gradient(-90deg,#FFFFFF_0%,#D9E4EF_90%)] flex items-center justify-between px-4">
         <button
@@ -64,10 +93,34 @@ export default function Navbar() {
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0
       `}>
-        {/* Desktop Logo */}
-        <div className="hidden lg:flex justify-center items-center py-6 px-6">
-          <img src="/logoSide.png" alt="Logo" className="w-48" />
+        <div className=" w-full bg-[linear-gradient(-90deg,#FFFFFF_0%,#D9E4EF_90%)] border border-gray-200 p-4">
+      {/* Header */}
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-11 h-11 rounded-full bg-teal-50 flex items-center justify-center text-teal-700 font-medium text-base flex-shrink-0">
+          {patient.initials}
         </div>
+        <div>
+          <p className="font-medium text-gray-900 text-md">{patient.name}</p>
+          <p className="text-base text-gray-500 mt-0.5 text-right" dir="rtl">
+            {patient.nameAr}
+          </p>
+        </div>
+      </div>
+
+      {/* Details */}
+      <div className="border-t border-gray-100 pt-3 space-y-2">
+        {[
+          { label: "MRN", value: patient.mrn },
+          { label: "Gender / Age", value: `${patient.gender}, ${patient.age} Yrs` },
+          { label: "Department", value: patient.department },
+        ].map(({ label, value }) => (
+          <div key={label} className="flex justify-between text-[13px]">
+            <span className="text-gray-500">{label}</span>
+            <span className="font-medium text-gray-900">{value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
 
         {/* Navigation Items */}
         <div className="flex-1 overflow-y-auto px-5 lg:px-6 py-4">
@@ -80,8 +133,8 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-4 py-2.5 rounded-lg text-[15px] lg:text-[16px] font-semibold transition-all duration-200 ${
                     isActive
-                      ? "bg-[#14A3B8] text-white shadow-sm"
-                      : "text-[#14A3B8] hover:bg-white/50 hover:text-[#07626f]"
+                      ? "bg-teal-600 text-white shadow-sm"
+                      : "text-teal-600 hover:bg-white/50 hover:text-[#07626f]"
                   }`
                 }
               >

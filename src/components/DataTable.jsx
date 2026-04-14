@@ -89,11 +89,11 @@ export function DataTable({ title, columns, rows, footer }) {
         </div>
       )}
 
-      <div style={{ overflowX: "auto" }}>
+      <div className="border" style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr>
-              {columns.map(col => (
+              {columns && columns.map(col => (
                 <th key={col.key} style={{
                   padding: "10px 16px",
                   textAlign: "left",
@@ -112,7 +112,7 @@ export function DataTable({ title, columns, rows, footer }) {
           </thead>
 
           <tbody>
-            {rows.map((row, ri) => (
+            {rows && rows.map((row, ri) => (
               <tr key={ri} style={{
                 borderBottom: ri < rows.length - 1 ? "1px solid #f3f5f8" : "none",
                 transition: "background .15s",
@@ -136,10 +136,9 @@ export function DataTable({ title, columns, rows, footer }) {
               </tr>
             ))}
           </tbody>
-        </table>
-      </div>
-
-      {footer && (
+          <tfooter>
+            <tr>
+                 {footer && (
         <div style={{
           padding: "10px 16px",
           borderTop: "1px solid #f0f2f5",
@@ -151,6 +150,12 @@ export function DataTable({ title, columns, rows, footer }) {
           {footer}
         </div>
       )}
+            </tr>
+          </tfooter>
+        </table>
+      </div>
+
+   
     </div>
   );
 }
