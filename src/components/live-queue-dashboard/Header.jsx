@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
       <div className="flex items-center gap-4">
-        <div className="w-12 h-12 rounded-xl bg-yellow-300 flex items-center justify-center shadow-sm">
+        <div className="w-12 h-12 rounded-xl bg-[#FDEF86] flex items-center justify-center shadow-sm">
           <Activity size={24} className="text-teal-700" />
         </div>
         <div>

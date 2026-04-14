@@ -16,14 +16,14 @@ const StatsCard = ({ title, value, icon, iconBg, iconColor, trend, trendText, tr
         <div className="text-3xl font-bold text-gray-900 mb-2">{value}</div>
         
         {trend && (
-          <div className="flex items-center gap-1.5 text-xs font-medium">
+          <div className="flex items-center gap-1.5 text-xs font-semibold">
             <span className={`flex items-center ${trendUp ? 'text-gray-400' : 'text-gray-400'}`}>
               <span className={`flex items-center ${trendUp ? 'text-gray-400' : 'text-emerald-400'}`}>
                 {trendUp ? <ArrowUpRight size={14} className="text-gray-300 mr-0.5" /> : <ArrowDownRight size={14} className="text-emerald-400 mr-0.5" />}
                 {trend}
               </span>
             </span>
-            <span className="text-gray-500 font-normal">{trendText}</span>
+            <span className="text-gray-500">{trendText}</span>
           </div>
         )}
 
