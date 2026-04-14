@@ -236,101 +236,99 @@ export function NewBooking() {
           {/* ── Left ── */}
           <div className="flex-1 min-w-0 flex flex-col gap-5">
 
-            {/* Patient Information */}
-            <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-4">
-              <h2 className="text-sm font-semibold text-gray-700">Patient Information</h2>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label required>Patient Name</Label>
-                  <TextInput value={patientName} onChange={setPatientName} placeholder="Full name" prefix={
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                    </svg>
-                  }/>
+            {/* Single combined card */}
+            <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-5">
+
+              {/* Service Category tabs */}
+              <div>
+                <h2 className="text-sm font-semibold text-gray-700 mb-3">Service Category</h2>
+                <div className="grid grid-cols-4 gap-3">
+                  {CATEGORIES.map(cat => {
+                    const active = category === cat.key
+                    return (
+                      <button
+                        key={cat.key}
+                        onClick={() => handleCategory(cat.key)}
+                        className={`flex flex-col items-center justify-center gap-2 py-4 px-2 rounded-2xl border-2 text-sm font-medium transition-all
+                          ${active ? 'border-amber-400 bg-amber-50 text-amber-600' : 'border-gray-200 bg-white text-gray-400 hover:border-gray-300 hover:text-gray-600'}`}
+                      >
+                        <span className={active ? 'text-amber-500' : 'text-gray-300'}>{cat.icon}</span>
+                        {cat.label}
+                      </button>
+                    )
+                  })}
                 </div>
-                <div>
-                  <Label required>Phone Number</Label>
-                  <TextInput value={phone} onChange={setPhone} placeholder="+20 100 000 0000" type="tel" prefix={
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                    </svg>
-                  }/>
-                </div>
-                <div>
-                  <Label required>{specialtyLabel}</Label>
-                  <SelectInput
-                    value={clinicId}
-                    onChange={handleClinic}
-                    options={filteredClinics}
-                    placeholder={`Select ${specialtyLabel.toLowerCase()}…`}
-                  />
-                </div>
-                <div>
-                  <Label>{doctorLabel}</Label>
-                  <SelectInput
-                    value={doctorId}
-                    onChange={setDoctorId}
-                    options={availableDoctors}
-                    placeholder={clinicId ? `Select ${doctorLabel.toLowerCase()}…` : 'Select clinic first'}
-                    disabled={!clinicId}
-                  />
-                </div>
-                <div>
-                  <Label required>Appointment Date</Label>
-                  <input
-                    type="date"
-                    value={apptDate}
-                    onChange={e => { setApptDate(e.target.value); setTimeSlot('') }}
-                    min={new Date().toISOString().split('T')[0]}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
-                  />
-                </div>
-                {category === 'opd' && (
+              </div>
+
+              <div className="border-t border-gray-100" />
+
+              {/* Patient info + booking fields */}
+              <div>
+                <h2 className="text-sm font-semibold text-gray-700 mb-3">Patient Information</h2>
+                <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label>Source of Business</Label>
-                    <SelectInput value={source} onChange={setSource} options={SOURCES} placeholder="Select source…"/>
+                    <Label required>Patient Name</Label>
+                    <TextInput value={patientName} onChange={setPatientName} placeholder="Full name" prefix={
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                      </svg>
+                    }/>
                   </div>
-                )}
+                  <div>
+                    <Label required>Phone Number</Label>
+                    <TextInput value={phone} onChange={setPhone} placeholder="+20 100 000 0000" type="tel" prefix={
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                      </svg>
+                    }/>
+                  </div>
+                  <div>
+                    <Label required>{specialtyLabel}</Label>
+                    <SelectInput
+                      value={clinicId}
+                      onChange={handleClinic}
+                      options={filteredClinics}
+                      placeholder={`Select ${specialtyLabel.toLowerCase()}…`}
+                    />
+                  </div>
+                  <div>
+                    <Label>{doctorLabel}</Label>
+                    <SelectInput
+                      value={doctorId}
+                      onChange={setDoctorId}
+                      options={availableDoctors}
+                      placeholder={clinicId ? `Select ${doctorLabel.toLowerCase()}…` : 'Select clinic first'}
+                      disabled={!clinicId}
+                    />
+                  </div>
+                  <div>
+                    <Label required>Appointment Date</Label>
+                    <input
+                      type="date"
+                      value={apptDate}
+                      onChange={e => { setApptDate(e.target.value); setTimeSlot('') }}
+                      min={new Date().toISOString().split('T')[0]}
+                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
+                    />
+                  </div>
+                  {category === 'opd' && (
+                    <div>
+                      <Label>Source of Business</Label>
+                      <SelectInput value={source} onChange={setSource} options={SOURCES} placeholder="Select source…"/>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Time Slot */}
               <div>
                 <Label required>Time Slot</Label>
-                <div className="flex flex-wrap gap-2">
-                  {TIME_SLOTS.map(t => (
-                    <button
-                      key={t}
-                      onClick={() => setTimeSlot(t)}
-                      className={`px-3 py-1.5 text-xs rounded-lg border transition-all
-                        ${timeSlot === t
-                          ? 'bg-teal-600 border-teal-600 text-white font-semibold'
-                          : 'border-gray-200 text-gray-500 hover:border-teal-300 hover:text-teal-600'}`}
-                    >
-                      {t}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            {/* Service Category */}
-            <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-4">
-              <h2 className="text-sm font-semibold text-gray-700">Service Category</h2>
-              <div className="grid grid-cols-4 gap-3">
-                {CATEGORIES.map(cat => {
-                  const active = category === cat.key
-                  return (
-                    <button
-                      key={cat.key}
-                      onClick={() => handleCategory(cat.key)}
-                      className={`flex flex-col items-center justify-center gap-2 py-4 px-2 rounded-2xl border-2 text-sm font-medium transition-all
-                        ${active ? 'border-amber-400 bg-amber-50 text-amber-600' : 'border-gray-200 bg-white text-gray-400 hover:border-gray-300 hover:text-gray-600'}`}
-                    >
-                      <span className={active ? 'text-amber-500' : 'text-gray-300'}>{cat.icon}</span>
-                      {cat.label}
-                    </button>
-                  )
-                })}
+                <SelectInput
+                  value={timeSlot}
+                  onChange={setTimeSlot}
+                  options={TIME_SLOTS}
+                  placeholder="Select time slot…"
+                />
               </div>
 
               {/* Notes */}

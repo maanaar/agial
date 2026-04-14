@@ -5,20 +5,20 @@ import { NewBooking }         from './pages/new-booking'
 import PatientSummary         from './pages/patient-summary'
 import Navbar        from './components/Navbar'
 import MedicalRecord from './pages/MedicalRecord'
-import ConsultationForm from "./pages/ConsultationForm";
+import ConsultationForm from './pages/ConsultationForm'
 
 function NewBookingPage() {
   const navigate = useNavigate()
   return <NewBooking onCancel={() => navigate(-1)} />
 }
 
-// Root layout — Navbar sidebar appears on every page.
-// Every route is an item navigable from the Navbar.
-function RootLayout() {
+// Shared layout for all consultation-area pages.
+// Renders the Navbar sidebar + the active child page via Outlet.
+function ConsultationLayout() {
   return (
-    <div className="flex w-full min-h-screen">
+    <div className="relative z-10 flex w-full flex-1 flex-col lg:flex-row min-h-screen">
       <Navbar />
-      <main className="flex-1 min-w-0">
+      <main className="w-full">
         <Outlet />
       </main>
     </div>
@@ -28,15 +28,16 @@ function RootLayout() {
 function App() {
   return (
     <Routes>
-      <Route element={<RootLayout />}>
-        <Route path="/opd-dashboard"       element={<OpdDashboard />} />
-        <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
-        <Route path="/CRM-view"            element={<NewBookingPage />} />
-        <Route path="/consultationform"    element={<ConsultationForm />} />
-        <Route path="/consultation">
-          <Route path="medicalrecord"   element={<MedicalRecord />} />
-          <Route path="patient-summary" element={<PatientSummary />} />
-        </Route>
+      {/* Standalone pages — no consultation Navbar */}
+      <Route path="/opd-dashboard"       element={<OpdDashboard />} />
+      <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
+      <Route path="/CRM-view"            element={<NewBookingPage />} />
+
+      {/* Consultation area — Navbar persists across all sub-pages */}
+      <Route path="/consultationform" element={<ConsultationLayout />}>
+        <Route index                    element={<ConsultationForm />} />
+        <Route path="medicalrecord"     element={<MedicalRecord />} />
+        <Route path="patient-summary"   element={<PatientSummary />} />
       </Route>
     </Routes>
   )

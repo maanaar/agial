@@ -5,13 +5,13 @@ import Inputs, {
   SelectInput,
   Textarea,
 } from "../components/Inputs";
-import Navbar from "../components/Navbar";
 import PageHeader from "../components/PageHeader";
 import SectionHeader, { SectionFooter } from "../components/SectionHeader";
 import StickyNote from "../components/StickyNote";
+import { usePatient } from "../context/PatientContext";
 
 export default function ConsultationForm() {
-  // const route = ["oral", "IV", "IM"]
+  const { patient } = usePatient()
 
   const complaintsColumns = [
     { key: "date", label: "Date" },
@@ -37,14 +37,10 @@ export default function ConsultationForm() {
   ];
 
   return (
-    <div className="relative z-10 flex  w-full flex-1 flex-col lg:flex-row min-h-screen">
-      <div>
-        <Navbar />
-      </div>
-      <div className="w-full">
+    <div className="w-full">
         <div>
           <PageHeader
-            title="Consultation Form"
+            title={patient ? `${patient.name} — Consultation` : 'Consultation Form'}
             tx=" Lab Request"
             no="0"
             tx2="Pharmacy"
@@ -52,7 +48,7 @@ export default function ConsultationForm() {
           />
         </div>
         <div>
-          <StickyNote note="Patient is allergic to Penicillin. Ensure to check latest vitals before prescribing new medication." />
+          <StickyNote note={patient?.note || 'Patient is allergic to Penicillin. Ensure to check latest vitals before prescribing new medication.'} />
         </div>
         <div>
           <SectionHeader
@@ -94,7 +90,7 @@ export default function ConsultationForm() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2  gap-3">
             <div className="flex flex-col gap-2">
-              <Label text="Recommended Lad" />
+              <Label text="Recommended Lab" />
               <select className="w-full inline-flex items-center border border-gray-300 rounded-md bg-white overflow-hidden focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-200  px-2.5 py-1.5 text-sm text-gray-900 bg-transparent [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
                 <option value="Select lab tests">Select lab tests</option>
                 <option value="test1">Test1</option>
@@ -128,7 +124,6 @@ export default function ConsultationForm() {
           hoverbg2="hover:bg-teal-700"
           tx2="text-white"
         />
-      </div>
     </div>
   );
 }
