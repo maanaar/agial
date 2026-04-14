@@ -143,64 +143,45 @@ export default function MedicalRecord() {
           <StickyNote note="Patient is allergic to Penicillin. Ensure to check latest vitals before prescribing new medication." />
         </div>
         <div>
-          {/* 
-      <DataTable
-        title="Complaints"
-        columns={complaintsColumns}
-        rows={complaintsRows}
-        footer="+ Add a line"
-      /> */}
           <SectionHeader header="Current Medications" />
           <div className="border mx-4 mb-4 bg-white">
             <DataTable columns={medicationsColumns} rows={medicationsRows} />
           </div>
-          {/* 
-      <DataTable
-        title="Vital Signs"
-        columns={vitalsColumns}
-        rows={vitalsRows}
-      /> */}
-
-          {/* <DataTable
-        title="Lab & Radiology Orders"
-        columns={labsColumns}
-        rows={labsRows}
-      /> */}
         </div>
         <SectionHeader header="Prescribe New Medication" />
         <div className="border m-4 my-0 p-4 bg-white">
-          <div className="mb-3">
+          <div className="mb-3 flex flex-col gap-2">
             <Label text="Medication Name" />
             <SearchInput placeholder="Search drug by name or active ingredient..." />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Dose / Strength" />
               <Inputs type="number" unit="mg" placeholder="e.g: 500" />
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Route" />
               <SelectInput />
             </div>
-            <div>
+            <div className="flex flex-col gap-2" >
               <Label text="Frequency" />
               <SelectInput />
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Duration" />
               <Inputs type="number" unit="Days" placeholder="e.g: 7" />
             </div>
 
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Start Date" />
               <Inputs type="date" />
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Dispense Quantity" />
               <SelectInput />
             </div>
           </div>
-          <div className="mt-3">
+          <div className="mt-3 flex flex-col gap-2">
             <Label text="Patient Instructions" />
             <Textarea placeholder="Add any specific instructions like 'Take after meals'..." />
           </div>
