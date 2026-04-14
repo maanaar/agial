@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState, useCallback } from "react";
 import { usePatient } from "../context/PatientContext";
-import { UsersRound } from 'lucide-react';
 
 const navItems = [
   {
@@ -27,19 +26,18 @@ const navItems = [
   {
     name: "Medical Record",
     iconClass: "fa-solid fa-file-medical",
-    path: "/consultation/medicalrecord",
+    path: "/consultationform/medicalrecord",
   },
   {
     name: "Patient Summary",
     iconClass: "fa-solid fa-user-injured",
-    path: "/consultation/patient-summary",
+    path: "/consultationform/patient-summary",
   },
   {
     name: "Patient Info",
     iconClass: "fa-solid fa-compass",
     path: "/Patientinfo",
   },
-
 ];
 
 export default function Navbar() {
