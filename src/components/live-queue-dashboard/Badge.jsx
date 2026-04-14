@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MessageCircle, UserWalking } from 'lucide-react';
+import { Phone, MessageCircle, User } from 'lucide-react';
 
 const Badge = ({ type, children }) => {
   const styles = {
@@ -36,7 +36,7 @@ export const SourceBadge = ({ source }) => {
   if (source === 'Walk-In') {
     return (
       <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded flex items-center gap-1 w-fit">
-        <UserWalking size={12} />
+        <User size={12} />
         {source}
       </span>
     );
