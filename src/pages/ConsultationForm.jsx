@@ -83,7 +83,7 @@ export default function ConsultationForm() {
             </div>
           </div>
         </div>
-        <SectionHeader header="Prescribe New Medication" />
+        <SectionHeader header="Recommendations & Follow-up" />
         <div className="border m-4 my-0 p-4 bg-white">
           <div className="mb-3 flex flex-col gap-2">
             <Label text="Final Diagnosis" />
@@ -94,7 +94,7 @@ export default function ConsultationForm() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2  gap-3">
             <div className="flex flex-col gap-2">
-              <Label text="Recommended Lad" />
+              <Label text="Recommended Lab" />
               <select className="w-full inline-flex items-center border border-gray-300 rounded-md bg-white overflow-hidden focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-200  px-2.5 py-1.5 text-sm text-gray-900 bg-transparent [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
                 <option value="Select lab tests">Select lab tests</option>
                 <option value="test1">Test1</option>

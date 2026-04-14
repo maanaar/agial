@@ -6,6 +6,7 @@ import PatientSummary         from './pages/patient-summary'
 import Navbar        from './components/Navbar'
 import MedicalRecord from './pages/MedicalRecord'
 import ConsultationForm from "./pages/ConsultationForm";
+import VitalSigns from './pages/VitalSigns'
 
 function NewBookingPage() {
   const navigate = useNavigate()
@@ -33,7 +34,8 @@ function App() {
       <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
       <Route path="/new-booking"         element={<NewBookingPage />} />
       <Route path="/patient-summary"     element={<PatientSummary />} />
-      <Route path="/medicalrecord" element={<MedicalRecord/>} />
+      <Route path="/consultation/medicalrecord" element={<MedicalRecord/>} />
+      <Route path="/consultation/vitalSigns" element={<VitalSigns/>} />
       <Route path="/consultationform" element={<ConsultationForm/>} />
 
       {/* <Route path="/" element={<Navigate to="/opd-dashboard" replace />} /> */}

@@ -28,6 +28,11 @@ const navItems = [
     path: "/consultation/medicalrecord",
   },
   {
+    name: "Vital Signs",
+    iconClass: "fa-solid fa-file-medical",
+    path: "/consultation/vitalSigns",
+  },
+  {
     name: "Patient Summary",
     iconClass: "fa-solid fa-user-injured",
     path: "/consultation/patient-summary",
