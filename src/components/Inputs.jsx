@@ -20,7 +20,7 @@ export  function SelectInput({ value, onChange}) {
   );
 }
 
-export function SearchInput(placeholder) {
+export function SearchInput({placeholder}) {
   return (
       <div className="w-full inline-flex items-center border border-gray-300 rounded-md bg-white overflow-hidden focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-200">
          <Search className="text-gray-400 w-4 h-4 shrink-0 ms-2" />

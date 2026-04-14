@@ -5,6 +5,7 @@ import { NewBooking }         from './pages/new-booking'
 import PatientSummary         from './pages/patient-summary'
 import Navbar        from './components/navbar'
 import MedicalRecord from './pages/MedicalRecord'
+import ConsultationForm from "./pages/ConsultationForm";
 
 function NewBookingPage() {
   const navigate = useNavigate()
@@ -26,21 +27,16 @@ function RootLayout() {
 
 function App() {
   return (
-    <Routes>
-      <Route element={<RootLayout />}>
-        {/* Standalone pages */}
-        <Route path="/opd-dashboard"       element={<OpdDashboard />} />
-        <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
-        <Route path="/CRM-view"            element={<NewBookingPage />} />
 
-        {/* Consultation area — medicalrecord & patient-summary live here.
-            Add the ConsultationForm page as the index route when ready:
-            <Route index element={<ConsultationForm />} /> */}
-        <Route path="/consultation">
-          <Route path="medicalrecord"   element={<MedicalRecord />} />
-          <Route path="patient-summary" element={<PatientSummary />} />
-        </Route>
-      </Route>
+    <Routes>
+      <Route path="/opd-dashboard"       element={<OpdDashboard />} />
+      <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
+      <Route path="/new-booking"         element={<NewBookingPage />} />
+      <Route path="/patient-summary"     element={<PatientSummary />} />
+      <Route path="/medicalrecord" element={<MedicalRecord/>} />
+      <Route path="/consultationform" element={<ConsultationForm/>} />
+
+      {/* <Route path="/" element={<Navigate to="/opd-dashboard" replace />} /> */}
     </Routes>
   )
 }

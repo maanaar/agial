@@ -18,6 +18,11 @@ const navItems = [
     path: "/CRM-view",
   },
   {
+    name: "Consultation Form",
+    iconClass: "fa-solid fa-stethoscope",
+    path: "/consultationform",
+  },
+  {
     name: "Medical Record",
     iconClass: "fa-solid fa-file-medical",
     path: "/consultation/medicalrecord",
@@ -72,10 +77,7 @@ export default function Navbar() {
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0
       `}>
-        {/* Desktop Logo */}
-        <div className="hidden lg:flex justify-center items-center py-6 px-6">
-          <img src="/logoSide.png" alt="Logo" className="w-48" />
-        </div>
+      
 
         {/* Navigation Items */}
         <div className="flex-1 overflow-y-auto px-5 lg:px-6 py-4">
