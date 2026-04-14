@@ -27,16 +27,17 @@ function RootLayout() {
 
 function App() {
   return (
-
     <Routes>
-      <Route path="/opd-dashboard"       element={<OpdDashboard />} />
-      <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
-      <Route path="/new-booking"         element={<NewBookingPage />} />
-      <Route path="/patient-summary"     element={<PatientSummary />} />
-      <Route path="/medicalrecord" element={<MedicalRecord/>} />
-      <Route path="/consultationform" element={<ConsultationForm/>} />
-
-      {/* <Route path="/" element={<Navigate to="/opd-dashboard" replace />} /> */}
+      <Route element={<RootLayout />}>
+        <Route path="/opd-dashboard"       element={<OpdDashboard />} />
+        <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
+        <Route path="/CRM-view"            element={<NewBookingPage />} />
+        <Route path="/consultationform"    element={<ConsultationForm />} />
+        <Route path="/consultation">
+          <Route path="medicalrecord"   element={<MedicalRecord />} />
+          <Route path="patient-summary" element={<PatientSummary />} />
+        </Route>
+      </Route>
     </Routes>
   )
 }
