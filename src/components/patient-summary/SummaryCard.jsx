@@ -1,0 +1,9 @@
+import React from 'react';
+
+const SummaryCard = ({ children, className = "" }) => (
+  <div className={`bg-white rounded-xl border border-gray-200 shadow-sm p-5 ${className}`}>
+    {children}
+  </div>
+);
+
+export default SummaryCard;
