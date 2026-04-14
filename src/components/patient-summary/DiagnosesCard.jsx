@@ -4,7 +4,7 @@ import SummaryCard from './SummaryCard';
 import SectionHeader from './SectionHeader';
 import StatusBadge from './StatusBadge';
 
-const DiagnosesCard = () => (
+const DiagnosesCard = ({ diagnoses }) => (
   <SummaryCard>
     <SectionHeader 
       title="Active Diagnoses" 
@@ -13,39 +13,24 @@ const DiagnosesCard = () => (
       iconColor="text-purple-500"
     />
     <div className="space-y-5">
-      <div className="flex justify-between items-start group">
-        <div className="flex gap-3">
-          <div className="mt-1 text-purple-400 group-hover:text-purple-600 transition-colors">
-            <AlertCircle size={18} />
-          </div>
-          <div>
-            <h5 className="font-bold text-gray-800 text-sm">Essential (primary) hypertension</h5>
-            <div className="flex gap-2 text-xs text-gray-400 mt-1">
-              <span>ICD-10: I10</span>
-              <span>•</span>
-              <span>Diagnosed: 01 Mar 2026</span>
+      {diagnoses?.map((item, idx) => (
+        <div key={idx} className={`flex justify-between items-start group ${idx > 0 ? 'border-t border-gray-100 pt-5' : ''}`}>
+          <div className="flex gap-3">
+            <div className="mt-1 text-purple-400 group-hover:text-purple-600 transition-colors">
+              <AlertCircle size={18} />
+            </div>
+            <div>
+              <h5 className="font-bold text-gray-800 text-sm">{item.title}</h5>
+              <div className="flex gap-2 text-xs text-gray-400 mt-1">
+                <span>ICD-10: {item.icd}</span>
+                <span>•</span>
+                <span>Diagnosed: {item.date}</span>
+              </div>
             </div>
           </div>
+          <StatusBadge type={item.type}>{item.type.charAt(0).toUpperCase() + item.type.slice(1)}</StatusBadge>
         </div>
-        <StatusBadge type="chronic">Chronic</StatusBadge>
-      </div>
-
-      <div className="flex justify-between items-start group border-t border-gray-100 pt-5">
-        <div className="flex gap-3">
-          <div className="mt-1 text-purple-400 group-hover:text-purple-600 transition-colors">
-            <AlertCircle size={18} />
-          </div>
-          <div>
-            <h5 className="font-bold text-gray-800 text-sm">Palpitations</h5>
-            <div className="flex gap-2 text-xs text-gray-400 mt-1">
-              <span>ICD-10: R00.2</span>
-              <span>•</span>
-              <span>Diagnosed: 15 Feb 2026</span>
-            </div>
-          </div>
-        </div>
-        <StatusBadge type="resolved">Resolved</StatusBadge>
-      </div>
+      ))}
     </div>
   </SummaryCard>
 );
