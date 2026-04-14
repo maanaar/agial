@@ -16,7 +16,7 @@ function App() {
       <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
       <Route path="/new-booking"         element={<NewBookingPage />} />
       <Route path="/patient-summary"     element={<PatientSummary />} />
-      <Route path="*" element={<Navigate to="/opd-dashboard" replace />} />
+      {/* <Route path="/" element={<Navigate to="/opd-dashboard" replace />} /> */}
     </Routes>
   )
 }
