@@ -91,7 +91,7 @@ const LiveQueueDashboardIndex = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#FAFBFC] flex items-center justify-center">
         <div className="flex flex-col items-center gap-3 text-gray-400">
           <div className="w-8 h-8 border-4 border-teal-600 border-t-transparent rounded-full animate-spin"></div>
           <span className="text-sm font-medium">Loading live queue...</span>

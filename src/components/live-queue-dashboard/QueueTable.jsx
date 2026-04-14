@@ -10,7 +10,7 @@ const QueueTable = ({ tabs, queueData }) => {
       <div className="w-full overflow-x-auto">
         <div className="min-w-[1000px]">
           {/* Table Header */}
-          <div className="grid grid-cols-12 gap-4 border-b border-gray-100 py-3 px-6 bg-white text-xs font-bold text-gray-400">
+          <div className="grid grid-cols-12 gap-4 border-b border-gray-100 py-3 px-6 bg-[#F8FAFC] text-xs font-bold text-gray-400">
             <div className="col-span-1">Token</div>
             <div className="col-span-2">Patient Info</div>
             <div className="col-span-2">Department & Provider</div>

@@ -10,7 +10,7 @@ const LiveQueueDashboard = ({ data }) => {
   if (!data) return null;
 
   return (
-    <div className="min-h-screen bg-[#F6F6F6] font-sans text-gray-900 flex flex-col">
+    <div className="min-h-screen bg-[#FAFBFC] font-sans text-gray-900 flex flex-col">
       <GlobalTopBar data={data.header} />
       
       <main className="flex-1 max-w-[1400px] w-full mx-auto p-6 lg:p-8">
