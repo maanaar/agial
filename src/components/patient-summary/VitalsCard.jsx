@@ -14,7 +14,7 @@ const VitalItem = ({ data }) => {
   const { icon: Icon, color } = icons[data.type] || icons.pressure;
 
   return (
-    <div className="p-4 rounded-xl bg-gray-50 border border-transparent hover:border-gray-200 transition-all">
+    <div className="p-4 rounded-xl border border-gray-200 hover:border-gray-400 transition-all">
       <div className="flex items-center gap-2 text-gray-400 text-xs font-medium mb-2 uppercase tracking-tight">
         <Icon size={14} className={color} />
         {data.label}
