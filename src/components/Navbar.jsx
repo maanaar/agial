@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState, useCallback } from "react";
-import { UsersRound } from 'lucide-react';
+import { usePatient } from "../context/PatientContext";
 
 const navItems = [
   {
@@ -26,7 +26,7 @@ const navItems = [
   {
     name: "Medical Record",
     iconClass: "fa-solid fa-file-medical",
-    path: "/consultation/medicalrecord",
+    path: "/consultationform/medicalrecord",
   },
   {
     name: "Vital Signs",
@@ -36,14 +36,13 @@ const navItems = [
   {
     name: "Patient Summary",
     iconClass: "fa-solid fa-user-injured",
-    path: "/consultation/patient-summary",
+    path: "/consultationform/patient-summary",
   },
   {
     name: "Patient Info",
     iconClass: "fa-solid fa-compass",
-    path: "/Patientinfo",
+    path: "/consultationform/Patientinfo",
   },
-
 ];
 
 export default function Navbar() {
@@ -56,15 +55,10 @@ export default function Navbar() {
   const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
   }, []);
-  const patient = {
-    initials: "NK",
-    name: "Nabila Khattab",
-    nameAr: "نبيلة خطاب عبدالسلام",
-    mrn: "F-80813",
-    gender: "Female",
-    age: 33,
-    department: "Internal Medicine",
-  };
+  const { patient } = usePatient()
+  const initials = patient?.name
+    ? patient.name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()
+    : '?'
   return (
     <>
    
@@ -98,34 +92,37 @@ export default function Navbar() {
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0
       `}>
-        <div className=" w-full bg-[linear-gradient(-90deg,#FFFFFF_0%,#D9E4EF_90%)] border border-gray-200 p-4">
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-11 h-11 rounded-full bg-teal-50 flex items-center justify-center text-teal-700 font-medium text-base flex-shrink-0">
-          {patient.initials}
-        </div>
-        <div>
-          <p className="font-medium text-gray-900 text-md">{patient.name}</p>
-          <p className="text-base text-gray-500 mt-0.5 text-right" dir="rtl">
-            {patient.nameAr}
-          </p>
-        </div>
+        <div className="w-full bg-[linear-gradient(-90deg,#FFFFFF_0%,#D9E4EF_90%)] border border-gray-200 p-4">
+        {patient ? (
+          <>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-11 h-11 rounded-full bg-teal-50 flex items-center justify-center text-teal-700 font-medium text-base flex-shrink-0">
+                {initials}
+              </div>
+              <div>
+                <p className="font-medium text-gray-900 text-md">{patient.name}</p>
+                {patient.nameAr && (
+                  <p className="text-base text-gray-500 mt-0.5 text-right" dir="rtl">{patient.nameAr}</p>
+                )}
+              </div>
+            </div>
+            <div className="border-t border-gray-100 pt-3 space-y-2">
+              {[
+                { label: 'MRN',          value: patient.mrn },
+                { label: 'Gender / Age', value: `${patient.gender ?? '—'}, ${patient.age ?? '—'} Yrs` },
+                { label: 'Department',   value: patient.department ?? '—' },
+              ].map(({ label, value }) => (
+                <div key={label} className="flex justify-between text-[13px]">
+                  <span className="text-gray-500">{label}</span>
+                  <span className="font-medium text-gray-900">{value}</span>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <p className="text-sm text-gray-400 italic">No patient selected</p>
+        )}
       </div>
-
-      {/* Details */}
-      <div className="border-t border-gray-100 pt-3 space-y-2">
-        {[
-          { label: "MRN", value: patient.mrn },
-          { label: "Gender / Age", value: `${patient.gender}, ${patient.age} Yrs` },
-          { label: "Department", value: patient.department },
-        ].map(({ label, value }) => (
-          <div key={label} className="flex justify-between text-[13px]">
-            <span className="text-gray-500">{label}</span>
-            <span className="font-medium text-gray-900">{value}</span>
-          </div>
-        ))}
-      </div>
-    </div>
 
         {/* Navigation Items */}
         <div className="flex-1 overflow-y-auto px-5 lg:px-6 py-4">
