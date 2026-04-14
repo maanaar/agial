@@ -3,6 +3,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './components/navbar'
 import MedicalRecord from './pages/MedicalRecord'
+import Patientinfo from "./pages/Patientinfo";
+
 
 
 function App() {
@@ -21,7 +23,7 @@ function App() {
             <Routes>
             
               <Route path="/medicalrecord" element={<MedicalRecord/>} />
-       
+             <Route path="/Patientinfo" element={<Patientinfo/>} />       
             </Routes>
          
         </main>

@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState, useCallback } from "react";
+import { UsersRound } from 'lucide-react';
 
 const navItems = [
   {
@@ -12,6 +13,12 @@ const navItems = [
     iconClass: "fa-solid fa-compass",
     path: "/medicalrecord",
   },
+  {
+    name: "Patient Info",
+    iconClass: "fa-solid fa-compass",
+    path: "/Patientinfo",
+  },
+
 ];
 
 export default function Navbar() {
@@ -79,6 +86,7 @@ export default function Navbar() {
                 }
               >
                 <i className={`${item.iconClass} text-[18px]`}></i>
+   
                 <span>{item.name}</span>
               </NavLink>
             ))}
