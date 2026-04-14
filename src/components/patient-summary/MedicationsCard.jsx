@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pill, Pills, Link } from 'lucide-react';
+import { Pill, Percent, Link } from 'lucide-react';
 import SummaryCard from './SummaryCard';
 import SectionHeader from './SectionHeader';
 import StatusBadge from './StatusBadge';
@@ -17,7 +17,7 @@ const MedicationsCard = ({ medications }) => (
         <div key={idx} className={`flex justify-between items-start ${idx > 0 ? 'border-t border-gray-50 pt-5' : ''}`}>
           <div className="flex gap-3">
             <div className="mt-1 p-1 bg-emerald-50 text-emerald-500 rounded">
-              {item.iconType === 'pills' ? <Pills size={16} /> : <Pill size={16} />}
+              {item.iconType === 'percent' ? <Percent size={16} /> : <Pill size={16} />}
             </div>
 
             <div>

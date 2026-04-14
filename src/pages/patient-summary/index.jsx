@@ -16,7 +16,7 @@ const PATIENT_DATA_MOCK = {
     { title: 'Palpitations', icd: 'R00.2', date: '15 Feb 2026', type: 'resolved' }
   ],
   medications: [
-    { name: 'Amlodipine 5mg Tablet', instructions: '1 tablet PO once daily', date: '01 Mar 2026', doctor: 'Dr. Ahmed Anwar', status: 'active', iconType: 'pills' },
+    { name: 'Amlodipine 5mg Tablet', instructions: '1 tablet PO once daily', date: '01 Mar 2026', doctor: 'Dr. Ahmed Anwar', status: 'active', iconType: 'percent' },
     { name: 'Vitamin D3 1000 IU Capsule', instructions: '1 capsule PO once daily', date: '10 Jan 2026', doctor: 'Dr. Ahmed Anwar', status: 'active', iconType: 'pill' }
   ],
   diagnostics: [
