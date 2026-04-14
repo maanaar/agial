@@ -3,7 +3,7 @@ import { Headset, MessageCircle, Footprints } from 'lucide-react';
 
 const Badge = ({ type, children }) => {
   const styles = {
-    warning: "bg-yellow-100 text-yellow-700",
+    warning: "bg-[#F9F388] text-yellow-700",
     info: "bg-blue-100 text-blue-700",
     success: "bg-green-100 text-green-700",
     purple: "bg-fuchsia-100 text-fuchsia-700", // pre-op
