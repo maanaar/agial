@@ -4,7 +4,7 @@ import Header from '../../components/live-queue-dashboard/Header';
 import StatsCard from '../../components/live-queue-dashboard/StatsCard';
 import QueueTable from '../../components/live-queue-dashboard/QueueTable';
 
-import { Users, Clock, Headphones, CheckCircle2 } from 'lucide-react';
+import { Users, Clock, Headset, CheckCircle2 } from 'lucide-react';
 
 const LiveQueueDashboard = ({ data }) => {
   if (!data) return null;
@@ -41,7 +41,7 @@ const LiveQueueDashboard = ({ data }) => {
           <StatsCard 
             title="Active Interactions" 
             value={data.stats.activeInteractions.value} 
-            icon={Headphones} 
+            icon={Headset} 
             iconBg="bg-fuchsia-50" 
             iconColor="text-fuchsia-500"
             detail={data.stats.activeInteractions.detail}
