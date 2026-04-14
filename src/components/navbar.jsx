@@ -5,7 +5,7 @@ const navItems = [
   {
     name: "Consultation Form",
     iconClass: "fa-solid fa-stethoscope",
-    path: "/consultatioform",
+    path: "/consultationform",
   },
   {
     name: "Medical Record",
@@ -57,10 +57,7 @@ export default function Navbar() {
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0
       `}>
-        {/* Desktop Logo */}
-        <div className="hidden lg:flex justify-center items-center py-6 px-6">
-          <img src="/logoSide.png" alt="Logo" className="w-48" />
-        </div>
+      
 
         {/* Navigation Items */}
         <div className="flex-1 overflow-y-auto px-5 lg:px-6 py-4">

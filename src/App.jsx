@@ -3,6 +3,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './components/navbar'
 import MedicalRecord from './pages/MedicalRecord'
+import ConsultationForm from "./pages/ConsultationForm";
 
 
 function App() {
@@ -19,9 +20,8 @@ function App() {
 
         <main className="w-full flex-1">
             <Routes>
-            
+              <Route path="/consultationform" element={<ConsultationForm/>} />
               <Route path="/medicalrecord" element={<MedicalRecord/>} />
-       
             </Routes>
          
         </main>
