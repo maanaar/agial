@@ -1,11 +1,45 @@
 import { NavLink } from "react-router-dom";
 import { useState, useCallback } from "react";
 import { usePatient } from "../context/PatientContext";
+import { UsersRound } from 'lucide-react';
 
 const navItems = [
-  { name: "Consultation Form", iconClass: "fa-solid fa-stethoscope",  path: "/consultationform" },
-  { name: "Medical Record",    iconClass: "fa-solid fa-file-medical",  path: "/consultationform/medicalrecord" },
-  { name: "Patient Summary",   iconClass: "fa-solid fa-user-injured",  path: "/consultationform/patient-summary" },
+  {
+    name: "OPD Dashboard",
+    iconClass: "fa-solid fa-hospital",
+    path: "/opd-dashboard",
+  },
+  {
+    name: "Emergency",
+    iconClass: "fa-solid fa-truck-medical",
+    path: "/emergency-dashboard",
+  },
+  {
+    name: "CRM View",
+    iconClass: "fa-solid fa-calendar-plus",
+    path: "/CRM-view",
+  },
+  {
+    name: "Consultation Form",
+    iconClass: "fa-solid fa-stethoscope",
+    path: "/consultationform",
+  },
+  {
+    name: "Medical Record",
+    iconClass: "fa-solid fa-file-medical",
+    path: "/consultation/medicalrecord",
+  },
+  {
+    name: "Patient Summary",
+    iconClass: "fa-solid fa-user-injured",
+    path: "/consultation/patient-summary",
+  },
+  {
+    name: "Patient Info",
+    iconClass: "fa-solid fa-compass",
+    path: "/Patientinfo",
+  },
+
 ];
 
 export default function Navbar() {
@@ -104,6 +138,7 @@ export default function Navbar() {
                 }
               >
                 <i className={`${item.iconClass} text-[18px]`}></i>
+   
                 <span>{item.name}</span>
               </NavLink>
             ))}
