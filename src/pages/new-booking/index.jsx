@@ -237,8 +237,8 @@ export function NewBooking() {
           <div className="flex-1 min-w-0 flex flex-col gap-5">
 
             {/* Patient Information */}
-            <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-              <h2 className="text-sm font-semibold text-gray-700 mb-4">Patient Information</h2>
+            <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-4">
+              <h2 className="text-sm font-semibold text-gray-700">Patient Information</h2>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label required>Patient Name</Label>
@@ -256,36 +256,6 @@ export function NewBooking() {
                     </svg>
                   }/>
                 </div>
-              </div>
-            </section>
-
-            {/* Service Category */}
-            <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-              <h2 className="text-sm font-semibold text-gray-700 mb-4">Service Category</h2>
-              <div className="grid grid-cols-4 gap-3">
-                {CATEGORIES.map(cat => {
-                  const active = category === cat.key
-                  return (
-                    <button
-                      key={cat.key}
-                      onClick={() => handleCategory(cat.key)}
-                      className={`flex flex-col items-center justify-center gap-2 py-4 px-2 rounded-2xl border-2 text-sm font-medium transition-all
-                        ${active ? 'border-amber-400 bg-amber-50 text-amber-600' : 'border-gray-200 bg-white text-gray-400 hover:border-gray-300 hover:text-gray-600'}`}
-                    >
-                      <span className={active ? 'text-amber-500' : 'text-gray-300'}>{cat.icon}</span>
-                      {cat.label}
-                    </button>
-                  )
-                })}
-              </div>
-            </section>
-
-            {/* Booking Fields */}
-            <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-4">
-              <h2 className="text-sm font-semibold text-gray-700">Booking Details</h2>
-
-              <div className="grid grid-cols-2 gap-4">
-                {/* Specialty / Clinic */}
                 <div>
                   <Label required>{specialtyLabel}</Label>
                   <SelectInput
@@ -295,8 +265,6 @@ export function NewBooking() {
                     placeholder={`Select ${specialtyLabel.toLowerCase()}…`}
                   />
                 </div>
-
-                {/* Doctor */}
                 <div>
                   <Label>{doctorLabel}</Label>
                   <SelectInput
@@ -307,8 +275,6 @@ export function NewBooking() {
                     disabled={!clinicId}
                   />
                 </div>
-
-                {/* Appointment Date */}
                 <div>
                   <Label required>Appointment Date</Label>
                   <input
@@ -319,8 +285,6 @@ export function NewBooking() {
                     className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
                   />
                 </div>
-
-                {/* Source of Business (OPD only) */}
                 {category === 'opd' && (
                   <div>
                     <Label>Source of Business</Label>
@@ -346,6 +310,27 @@ export function NewBooking() {
                     </button>
                   ))}
                 </div>
+              </div>
+            </section>
+
+            {/* Service Category */}
+            <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-4">
+              <h2 className="text-sm font-semibold text-gray-700">Service Category</h2>
+              <div className="grid grid-cols-4 gap-3">
+                {CATEGORIES.map(cat => {
+                  const active = category === cat.key
+                  return (
+                    <button
+                      key={cat.key}
+                      onClick={() => handleCategory(cat.key)}
+                      className={`flex flex-col items-center justify-center gap-2 py-4 px-2 rounded-2xl border-2 text-sm font-medium transition-all
+                        ${active ? 'border-amber-400 bg-amber-50 text-amber-600' : 'border-gray-200 bg-white text-gray-400 hover:border-gray-300 hover:text-gray-600'}`}
+                    >
+                      <span className={active ? 'text-amber-500' : 'text-gray-300'}>{cat.icon}</span>
+                      {cat.label}
+                    </button>
+                  )
+                })}
               </div>
 
               {/* Notes */}

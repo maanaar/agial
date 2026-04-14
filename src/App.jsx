@@ -6,6 +6,8 @@ import PatientSummary         from './pages/patient-summary'
 import Navbar        from './components/Navbar'
 import MedicalRecord from './pages/MedicalRecord'
 import ConsultationForm from "./pages/ConsultationForm";
+import Patientinfo from "./pages/Patientinfo";
+
 import VitalSigns from './pages/VitalSigns'
 
 function NewBookingPage() {
@@ -28,17 +30,19 @@ function RootLayout() {
 
 function App() {
   return (
-
     <Routes>
-      <Route path="/opd-dashboard"       element={<OpdDashboard />} />
-      <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
-      <Route path="/new-booking"         element={<NewBookingPage />} />
-      <Route path="/patient-summary"     element={<PatientSummary />} />
-      <Route path="/consultation/medicalrecord" element={<MedicalRecord/>} />
-      <Route path="/consultation/vitalSigns" element={<VitalSigns/>} />
-      <Route path="/consultationform" element={<ConsultationForm/>} />
-
-      {/* <Route path="/" element={<Navigate to="/opd-dashboard" replace />} /> */}
+      <Route element={<RootLayout />}>
+        <Route path="/opd-dashboard"       element={<OpdDashboard />} />
+        <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
+        <Route path="/CRM-view"            element={<NewBookingPage />} />
+        <Route path="/consultationform"    element={<ConsultationForm />} />
+        <Route path="/consultation"/>
+          <Route path="medicalrecord"   element={<MedicalRecord />} />
+                <Route path="/vitalSigns" element={<VitalSigns/>} />
+          <Route path="patient-summary" element={<PatientSummary />} />
+          <Route path="/Patientinfo" element={<Patientinfo/>} />
+          <Route path="/inpatientadmission" element={<InpatientAdmission/>} />
+        </Route>
     </Routes>
   )
 }
