@@ -20,6 +20,11 @@ const navItems = [
     path: "/consultationform/vitalSigns",
   },
   {
+    name: "Diagnostic Requests",
+    iconClass: "fa-solid fa-compass",
+    path: "/consultationform/DiagnosticRequests",
+  },
+  {
     name: "Patient Summary",
     iconClass: "fa-solid fa-user-injured",
     path: "/consultationform/patient-summary",
@@ -70,7 +75,7 @@ export default function Navbar() {
       {/* Sidebar */}
       <div className={`
         fixed lg:sticky top-0 z-50
-        w-[280px] h-screen
+        w-[300px] h-screen
         bg-white/70 backdrop-blur-md border-r
         bg-[linear-gradient(-90deg,#FFFFFF_0%,#D9E4EF_90%)]
         flex flex-col

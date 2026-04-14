@@ -55,6 +55,7 @@ export default function VitalSigns() {
 
   return (
     <div className="relative z-10 flex  w-full flex-1 flex-col lg:flex-row min-h-screen">
+
       <div className="w-full">
         <div>
           <PageHeader title="Vitals Signs" tx="Last Visit" no="2 hrs ago" />
@@ -64,12 +65,12 @@ export default function VitalSigns() {
         </div>
         <SectionHeader header="Record New Vital Signs" />
         <div className="border m-4 my-0 p-4 bg-white">
-          <div className="mb-3 w-[50%]">
+          <div className="mb-3 w-[50%] flex flex-col gap-2">
             <Label text="Date & Time" />
             <Inputs type="date" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Blood Pressure (mmhg)" />
               <div className="flex gap-3 items-center ">
                 <Inputs type="number" placeholder="120" />
@@ -77,31 +78,31 @@ export default function VitalSigns() {
                 <Inputs type="number" placeholder="80" />
               </div>
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Heart Rate" />
               <Inputs type="number" unit="bpm" placeholder="72" />
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Temperature" />
               <Inputs type="number" unit="°C" placeholder="37.1" />
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Respiratory Rate" />
               <Inputs type="number" unit="/min" placeholder="16" />
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Spo2" />
               <Inputs type="number" unit="%" placeholder="98" />
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Weight" />
               <Inputs type="number" unit="kg" placeholder="65" />
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="Height" />
               <Inputs type="number" unit="cm" placeholder="165" />
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label text="BMI" />
               <Inputs
                 type="number"
@@ -110,7 +111,7 @@ export default function VitalSigns() {
               />
             </div>
           </div>
-          <div className="mt-3">
+          <div className="mt-3 flex flex-col gap-2">
             <Label text="Remarks / Notes" />
             <Textarea placeholder="Add any observations regarding patient vitals..." />
           </div>

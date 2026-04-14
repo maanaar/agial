@@ -82,3 +82,26 @@ export function Textarea({placeholder}) {
     </div>
   )
 }
+
+export  function RadioInput({  onChange, priorities }) {
+  return (
+    <div className="flex items-center gap-4">
+      {priorities.map((option) => (
+        <label
+          key={option}
+          for={option}
+          className="flex items-center gap-1.5 cursor-pointer select-none text-sm text-gray-700"
+        >
+          <input
+            type="radio"
+            name="priority"
+            value={option}
+            onChange={() => onChange(option)}
+            className="w-4 h-4 accent-blue-600 cursor-pointer"
+          />
+          {option}
+        </label>
+      ))}
+    </div>
+  );
+}

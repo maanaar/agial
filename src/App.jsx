@@ -1,19 +1,19 @@
-import { Routes, Route, useNavigate, Outlet } from 'react-router-dom'
-import { OpdDashboard }       from './pages/opd-dashboard'
-import { EmergencyDashboard } from './pages/emergency-dashboard'
-import { NewBooking }         from './pages/new-booking'
-import PatientSummary         from './pages/patient-summary'
-import Navbar        from './components/Navbar'
-import MedicalRecord from './pages/MedicalRecord'
-import ConsultationForm from './pages/ConsultationForm'
-import Patientinfo from './pages/Patientinfo'
-import InpatientAdmission from './pages/InpatientAdmission'
-import VitalSigns from './pages/VitalSigns'
-
+import { Routes, Route, useNavigate, Outlet } from "react-router-dom";
+import { OpdDashboard } from "./pages/opd-dashboard";
+import { EmergencyDashboard } from "./pages/emergency-dashboard";
+import { NewBooking } from "./pages/new-booking";
+import PatientSummary from "./pages/patient-summary";
+import Navbar from "./components/Navbar";
+import MedicalRecord from "./pages/MedicalRecord";
+import ConsultationForm from "./pages/ConsultationForm";
+import Patientinfo from "./pages/Patientinfo";
+import InpatientAdmission from "./pages/InpatientAdmission";
+import VitalSigns from "./pages/VitalSigns";
+import DiagnosticRequests from "./pages/DiagnosticRequests";
 
 function NewBookingPage() {
-  const navigate = useNavigate()
-  return <NewBooking onCancel={() => navigate(-1)} />
+  const navigate = useNavigate();
+  return <NewBooking onCancel={() => navigate(-1)} />;
 }
 
 // Shared layout for all consultation-area pages.
@@ -26,28 +26,29 @@ function ConsultationLayout() {
         <Outlet />
       </main>
     </div>
-  )
+  );
 }
 
 function App() {
   return (
     <Routes>
       {/* Standalone pages — no consultation Navbar */}
-      <Route path="/opd-dashboard"       element={<OpdDashboard />} />
+      <Route path="/opd-dashboard" element={<OpdDashboard />} />
       <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
-      <Route path="/CRM-view"            element={<NewBookingPage />} />
+      <Route path="/CRM-view" element={<NewBookingPage />} />
+      <Route path="/inpatientadmission" element={<InpatientAdmission />} />
 
       {/* Consultation area — Navbar persists across all sub-pages */}
       <Route path="/consultationform" element={<ConsultationLayout />}>
-        <Route index                    element={<ConsultationForm />} />
-        <Route path="medicalrecord"     element={<MedicalRecord />} />
-        <Route path="vitalSigns" element={<VitalSigns/>} />
-        <Route path="patient-summary"   element={<PatientSummary />} />
-        <Route path="Patientinfo" element={<Patientinfo/>} />
-        <Route path="inpatientadmission" element={<InpatientAdmission/>} />
+        <Route index element={<ConsultationForm />} />
+        <Route path="medicalrecord" element={<MedicalRecord />} />
+        <Route path="vitalSigns" element={<VitalSigns />} />
+        <Route path="DiagnosticRequests" element={<DiagnosticRequests/>}/>
+        <Route path="patient-summary" element={<PatientSummary />} />
+        <Route path="Patientinfo" element={<Patientinfo />} />
       </Route>
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;
