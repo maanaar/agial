@@ -1,9 +1,9 @@
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, Outlet } from 'react-router-dom'
 import { OpdDashboard }       from './pages/opd-dashboard'
 import { EmergencyDashboard } from './pages/emergency-dashboard'
 import { NewBooking }         from './pages/new-booking'
 import PatientSummary         from './pages/patient-summary'
-import Navbar from './components/navbar'
+import Navbar        from './components/navbar'
 import MedicalRecord from './pages/MedicalRecord'
 
 function NewBookingPage() {
@@ -11,21 +11,36 @@ function NewBookingPage() {
   return <NewBooking onCancel={() => navigate(-1)} />
 }
 
-
+// Root layout — Navbar sidebar appears on every page.
+// Every route is an item navigable from the Navbar.
+function RootLayout() {
+  return (
+    <div className="flex w-full min-h-screen">
+      <Navbar />
+      <main className="flex-1 min-w-0">
+        <Outlet />
+      </main>
+    </div>
+  )
+}
 
 function App() {
-
-
   return (
-
-    
     <Routes>
-      <Route path="/opd-dashboard"       element={<OpdDashboard />} />
-      <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
-      <Route path="/new-booking"         element={<NewBookingPage />} />
-      <Route path="/patient-summary"     element={<PatientSummary />} />
-      <Route path="/medicalrecord" element={<MedicalRecord/>} />
-      {/* <Route path="/" element={<Navigate to="/opd-dashboard" replace />} /> */}
+      <Route element={<RootLayout />}>
+        {/* Standalone pages */}
+        <Route path="/opd-dashboard"       element={<OpdDashboard />} />
+        <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
+        <Route path="/CRM-view"            element={<NewBookingPage />} />
+
+        {/* Consultation area — medicalrecord & patient-summary live here.
+            Add the ConsultationForm page as the index route when ready:
+            <Route index element={<ConsultationForm />} /> */}
+        <Route path="/consultation">
+          <Route path="medicalrecord"   element={<MedicalRecord />} />
+          <Route path="patient-summary" element={<PatientSummary />} />
+        </Route>
+      </Route>
     </Routes>
   )
 }
