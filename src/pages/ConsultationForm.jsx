@@ -5,6 +5,7 @@ import Inputs, {
   SelectInput,
   Textarea,
 } from "../components/Inputs";
+import Navbar from "../components/Navbar";
 import PageHeader from "../components/PageHeader";
 import SectionHeader, { SectionFooter } from "../components/SectionHeader";
 import StickyNote from "../components/StickyNote";
@@ -36,8 +37,11 @@ export default function ConsultationForm() {
   ];
 
   return (
-    <div>
+    <div className="relative z-10 flex  w-full flex-1 flex-col lg:flex-row min-h-screen">
       <div>
+        <Navbar />
+      </div>
+      <div className="w-full">
         <div>
           <PageHeader
             title="Consultation Form"
