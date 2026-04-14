@@ -1,18 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { usePatient } from '../../context/PatientContext'
 
-// Small pool of demo patients — assigned to clinics by index
-const DEMO_PATIENTS = [
-  { name: 'Nabila Khattab',    nameAr: 'نبيلة خطاب',     mrn: 'F-80813', gender: 'Female', age: 33, note: 'Allergic to Penicillin.' },
-  { name: 'Ahmed Samy',        nameAr: 'أحمد سامي',       mrn: 'M-21045', gender: 'Male',   age: 47, note: 'Hypertensive — monitor BP.' },
-  { name: 'Layla Hassan',      nameAr: 'ليلى حسن',        mrn: 'F-33781', gender: 'Female', age: 29, note: 'Follow-up post-surgery.' },
-  { name: 'Omar Farouk',       nameAr: 'عمر فاروق',       mrn: 'M-55902', gender: 'Male',   age: 52, note: 'Diabetic — check HbA1c.' },
-  { name: 'Sara Mahmoud',      nameAr: 'سارة محمود',      mrn: 'F-67234', gender: 'Female', age: 38, note: 'Routine follow-up.' },
-  { name: 'Khaled Ibrahim',    nameAr: 'خالد إبراهيم',    mrn: 'M-88410', gender: 'Male',   age: 61, note: 'Chest pain — ECG pending.' },
-  { name: 'Mona Saleh',        nameAr: 'منى صالح',        mrn: 'F-11293', gender: 'Female', age: 44, note: 'Migraine — medication review.' },
-  { name: 'Youssef Adel',      nameAr: 'يوسف عادل',       mrn: 'M-74561', gender: 'Male',   age: 35, note: 'Sports injury follow-up.' },
-]
-
 // Background colors mapped from Odoo's clinic_color field (1–11)
 const COLOR_MAP = [
   'bg-amber-400',   // 1
@@ -51,6 +39,7 @@ export function ClinicCard({ clinic }) {
     id, name, color, status, doctor,
     waiting_queue, today_appointments,
     capacity_max, capacity_used,
+    patients = [],
   } = clinic
 
   const isHighDemand = status === 'High Demand'
@@ -65,14 +54,6 @@ export function ClinicCard({ clinic }) {
   const doctorImg = doctor?.image
     ? doctor.image
     : `https://ui-avatars.com/api/?name=${encodeURIComponent(doctor?.name || 'D')}&size=40&background=94a3b8&color=fff`
-
-  // Pick 2 demo patients per clinic based on clinic id
-  const offset = ((id || 1) - 1) % DEMO_PATIENTS.length
-  const patients = [
-    { ...DEMO_PATIENTS[offset % DEMO_PATIENTS.length],           department: name, wait: '12m' },
-    { ...DEMO_PATIENTS[(offset + 1) % DEMO_PATIENTS.length],     department: name, wait: '28m' },
-    { ...DEMO_PATIENTS[(offset + 2) % DEMO_PATIENTS.length],     department: name, wait: '45m' },
-  ]
 
   function openConsultation(patient) {
     setPatient(patient)

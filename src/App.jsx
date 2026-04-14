@@ -41,7 +41,7 @@ function App() {
       <Route path="/consultationform" element={<ConsultationLayout />}>
         <Route index                    element={<ConsultationForm />} />
         <Route path="medicalrecord"     element={<MedicalRecord />} />
-                          <Route path="vitalSigns" element={<VitalSigns/>} />
+        <Route path="vitalSigns" element={<VitalSigns/>} />
         <Route path="patient-summary"   element={<PatientSummary />} />
         <Route path="Patientinfo" element={<Patientinfo/>} />
         <Route path="inpatientadmission" element={<InpatientAdmission/>} />

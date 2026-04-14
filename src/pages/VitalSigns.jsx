@@ -55,9 +55,6 @@ export default function VitalSigns() {
 
   return (
     <div className="relative z-10 flex  w-full flex-1 flex-col lg:flex-row min-h-screen">
-      <div>
-        <Navbar />
-      </div>
       <div className="w-full">
         <div>
           <PageHeader title="Vitals Signs" tx="Last Visit" no="2 hrs ago" />

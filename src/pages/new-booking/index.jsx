@@ -154,6 +154,10 @@ export function NewBooking() {
   const [category,    setCategory]    = useState('opd')
   const [patientName, setPatientName] = useState('')
   const [phone,       setPhone]       = useState('')
+  const [nationalId,  setNationalId]  = useState('')
+  const [address,     setAddress]     = useState('')
+  const [scanLoading, setScanLoading] = useState(false)
+  const [scanError,   setScanError]   = useState('')
   const [clinicId,    setClinicId]    = useState('')
   const [doctorId,    setDoctorId]    = useState('')
   const [apptDate,    setApptDate]    = useState('')
@@ -179,6 +183,29 @@ export function NewBooking() {
   function handleClinic(val) {
     setClinicId(val)
     setDoctorId('')
+  }
+
+  async function handleScanId(e) {
+    const file = e.target.files[0]
+    if (!file) return
+    setScanError('')
+    setScanLoading(true)
+    try {
+      const form = new FormData()
+      form.append('file', file, file.name)
+      const res = await fetch('/id_scanner', { method: 'POST', body: form })
+      if (!res.ok) throw new Error('Scanner returned ' + res.status)
+      const json = await res.json()
+      const data = json.extracted_data || {}
+      if (data.full_name)   setPatientName(data.full_name)
+      if (data.national_id) setNationalId(data.national_id)
+      if (data.address)     setAddress(data.address)
+    } catch (err) {
+      setScanError('Failed to extract ID data. Please fill in manually.')
+    } finally {
+      setScanLoading(false)
+      e.target.value = ''
+    }
   }
 
   // Which clinics/doctors to show per tab
@@ -264,7 +291,26 @@ export function NewBooking() {
 
               {/* Patient info + booking fields */}
               <div>
-                <h2 className="text-sm font-semibold text-gray-700 mb-3">Patient Information</h2>
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-sm font-semibold text-gray-700">Patient Information</h2>
+                  <label className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-sm font-medium cursor-pointer transition-all
+                    ${scanLoading ? 'bg-gray-50 text-gray-400 border-gray-200 cursor-wait' : 'bg-teal-50 text-teal-700 border-teal-200 hover:bg-teal-100'}`}>
+                    {scanLoading ? (
+                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+                      </svg>
+                    ) : (
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                        <circle cx="12" cy="13" r="3"/>
+                      </svg>
+                    )}
+                    {scanLoading ? 'Scanning…' : 'Scan ID Card'}
+                    <input type="file" accept="image/*" className="hidden" onChange={handleScanId} disabled={scanLoading} />
+                  </label>
+                </div>
+                {scanError && <p className="text-xs text-red-500 mb-2">{scanError}</p>}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <Label required>Patient Name</Label>
@@ -281,6 +327,14 @@ export function NewBooking() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                       </svg>
                     }/>
+                  </div>
+                  <div>
+                    <Label>National ID</Label>
+                    <TextInput value={nationalId} onChange={setNationalId} placeholder="14-digit national ID" />
+                  </div>
+                  <div className="col-span-2">
+                    <Label>Address</Label>
+                    <TextInput value={address} onChange={setAddress} placeholder="Street, city, governorate" />
                   </div>
                   <div>
                     <Label required>{specialtyLabel}</Label>

@@ -4,24 +4,10 @@ import { usePatient } from "../context/PatientContext";
 
 const navItems = [
   {
-    name: "OPD Dashboard",
-    iconClass: "fa-solid fa-hospital",
-    path: "/opd-dashboard",
-  },
-  {
-    name: "Emergency",
-    iconClass: "fa-solid fa-truck-medical",
-    path: "/emergency-dashboard",
-  },
-  {
-    name: "CRM View",
-    iconClass: "fa-solid fa-calendar-plus",
-    path: "/CRM-view",
-  },
-  {
     name: "Consultation Form",
     iconClass: "fa-solid fa-stethoscope",
     path: "/consultationform",
+    end: true,
   },
   {
     name: "Medical Record",
@@ -31,7 +17,7 @@ const navItems = [
   {
     name: "Vital Signs",
     iconClass: "fa-solid fa-file-medical",
-    path: "/consultation/vitalSigns",
+    path: "/consultationform/vitalSigns",
   },
   {
     name: "Patient Summary",
@@ -131,6 +117,7 @@ export default function Navbar() {
               <NavLink
                 key={item.name}
                 to={item.path}
+                end={item.end}
                 onClick={closeMobileMenu}
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-4 py-2.5 rounded-lg text-[15px] lg:text-[16px] font-semibold transition-all duration-200 ${
@@ -141,7 +128,6 @@ export default function Navbar() {
                 }
               >
                 <i className={`${item.iconClass} text-[18px]`}></i>
-   
                 <span>{item.name}</span>
               </NavLink>
             ))}

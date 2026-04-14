@@ -155,7 +155,7 @@ export default function InpatientAdmission() {
       </nav>
 
       {/* Patient Header */}
-      <div className="bg-white border-b border-gray-200 px-6 py-3">
+      {/* <div className="bg-white border-b border-gray-200 px-6 py-3">
         <div className="flex items-start justify-between">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
@@ -187,7 +187,7 @@ export default function InpatientAdmission() {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="px-6 py-5">
