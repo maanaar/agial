@@ -5,6 +5,7 @@ import { OpdDashboard }       from './pages/opd-dashboard'
 import { EmergencyDashboard } from './pages/emergency-dashboard'
 import { NewBooking }         from './pages/new-booking'
 import PatientSummary from './pages/patient-summary'
+import LiveQueueDashboard from './pages/live-queue-dashboard';
 
 
 function NewBookingPage() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/emergency-dashboard" element={<EmergencyDashboard />} />
             <Route path="/new-booking"         element={<NewBookingPage />} />
             <Route path="/patient-summary"     element={<PatientSummary />} />
+            <Route path="/live-queue-dashboard" element={<LiveQueueDashboard />} />
 
             <Route path="*" element={<Navigate to="/opd-dashboard" replace />} />
           </Routes>
