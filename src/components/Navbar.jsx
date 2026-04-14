@@ -36,7 +36,7 @@ const navItems = [
   {
     name: "Patient Info",
     iconClass: "fa-solid fa-compass",
-    path: "/Patientinfo",
+    path: "/consultationform/Patientinfo",
   },
 ];
 

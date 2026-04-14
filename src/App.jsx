@@ -6,6 +6,8 @@ import PatientSummary         from './pages/patient-summary'
 import Navbar        from './components/Navbar'
 import MedicalRecord from './pages/MedicalRecord'
 import ConsultationForm from './pages/ConsultationForm'
+import Patientinfo from './pages/Patientinfo'
+import InpatientAdmission from './pages/InpatientAdmission'
 
 function NewBookingPage() {
   const navigate = useNavigate()
@@ -38,8 +40,8 @@ function App() {
         <Route index                    element={<ConsultationForm />} />
         <Route path="medicalrecord"     element={<MedicalRecord />} />
         <Route path="patient-summary"   element={<PatientSummary />} />
-        <Route path="/Patientinfo" element={<Patientinfo/>} />       
-        <Route path="/inpatientadmission" element={<InpatientAdmission/>} />
+        <Route path="Patientinfo" element={<Patientinfo/>} />
+        <Route path="inpatientadmission" element={<InpatientAdmission/>} />
       </Route>
     </Routes>
   )
