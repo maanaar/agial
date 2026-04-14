@@ -4,7 +4,7 @@ import Badge, { SourceBadge } from './Badge';
 const QueueRow = ({ item }) => {
   return (
     <div className="grid grid-cols-12 gap-4 border-b border-gray-100 py-4 px-6 items-center hover:bg-gray-50 transition-colors">
-      <div className="col-span-1 text-sm font-bold text-gray-900">
+      <div className="col-span-1 text-[13px] font-mono tracking-tight font-bold text-gray-900">
         {item.token}
       </div>
       
