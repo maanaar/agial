@@ -3,7 +3,7 @@ import { OpdDashboard }       from './pages/opd-dashboard'
 import { EmergencyDashboard } from './pages/emergency-dashboard'
 import { NewBooking }         from './pages/new-booking'
 import PatientSummary         from './pages/patient-summary'
-import Navbar        from './components/navbar'
+import Navbar        from './components/Navbar'
 import MedicalRecord from './pages/MedicalRecord'
 import ConsultationForm from "./pages/ConsultationForm";
 
