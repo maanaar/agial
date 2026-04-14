@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stethoscope, FileText, Activity } from 'lucide-react';
+import { Microscope, FileText, Activity } from 'lucide-react';
 import SummaryCard from './SummaryCard';
 import SectionHeader from './SectionHeader';
 import StatusBadge from './StatusBadge';
@@ -8,7 +8,7 @@ const DiagnosticsCard = ({ diagnostics }) => (
   <SummaryCard>
     <SectionHeader 
       title="Recent Diagnostics" 
-      icon={Stethoscope} 
+      icon={Microscope} 
       actionText="Lab Results" 
       iconColor="text-blue-500"
     />

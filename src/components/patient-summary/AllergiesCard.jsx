@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertCircle, ShieldAlert } from 'lucide-react';
+import { AlertTriangle, ShieldAlert } from 'lucide-react';
 import SummaryCard from './SummaryCard';
 import SectionHeader from './SectionHeader';
 import StatusBadge from './StatusBadge';
@@ -8,7 +8,7 @@ const AllergiesCard = ({ allergies }) => (
   <SummaryCard>
     <SectionHeader 
       title="Allergies & Alerts" 
-      icon={AlertCircle} 
+      icon={AlertTriangle} 
       actionText="Update" 
       iconColor="text-red-500"
     />

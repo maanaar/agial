@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, Heart, Thermometer, Wind, TrendingUp } from 'lucide-react';
+import { HeartPulse, Activity, Heart, Thermometer, Wind, TrendingUp } from 'lucide-react';
 import SummaryCard from './SummaryCard';
 import SectionHeader from './SectionHeader';
 
@@ -35,7 +35,7 @@ const VitalsCard = ({ vitals }) => (
   <SummaryCard>
     <SectionHeader 
       title="Latest Vital Signs" 
-      icon={Activity} 
+      icon={HeartPulse} 
       actionText="View Flowsheet" 
       iconColor="text-pink-500"
     />

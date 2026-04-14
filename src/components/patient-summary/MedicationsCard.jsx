@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plus, Pill } from 'lucide-react';
+import { Pill, Pills, Link } from 'lucide-react';
 import SummaryCard from './SummaryCard';
 import SectionHeader from './SectionHeader';
 import StatusBadge from './StatusBadge';
@@ -8,7 +8,7 @@ const MedicationsCard = ({ medications }) => (
   <SummaryCard>
     <SectionHeader 
       title="Active Medications" 
-      icon={Pill} 
+      icon={Link} 
       actionText="View All" 
       iconColor="text-emerald-500"
     />
@@ -17,8 +17,9 @@ const MedicationsCard = ({ medications }) => (
         <div key={idx} className={`flex justify-between items-start ${idx > 0 ? 'border-t border-gray-50 pt-5' : ''}`}>
           <div className="flex gap-3">
             <div className="mt-1 p-1 bg-emerald-50 text-emerald-500 rounded">
-              {item.iconType === 'plus' ? <Plus size={16} /> : <Pill size={16} />}
+              {item.iconType === 'pills' ? <Pills size={16} /> : <Pill size={16} />}
             </div>
+
             <div>
               <h5 className="font-bold text-gray-800 text-sm">{item.name}</h5>
               <p className="text-gray-500 text-xs mt-0.5">{item.instructions}</p>

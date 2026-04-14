@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plus, ChevronRight, ShieldAlert } from 'lucide-react';
+import { Plus, ChevronRight, FileText } from 'lucide-react';
 
 // Components
 import VitalsCard from '../../components/patient-summary/VitalsCard';
@@ -35,7 +35,7 @@ const PatientSummary = ({ data }) => {
         {data.clinicalNotes && (
           <div className="bg-[#FFF9E6] border border-[#FFE8A3] rounded-xl p-4 mb-8 flex gap-3 shadow-sm">
             <div className="text-yellow-600 mt-1">
-              <ShieldAlert size={20} fill="currentColor" fillOpacity={0.2} />
+              <FileText size={20} fill="currentColor" fillOpacity={0.2} />
             </div>
             <div>
               <h4 className="font-bold text-[#856404] text-sm mb-1">Important Clinical Notes</h4>
