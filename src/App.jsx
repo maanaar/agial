@@ -39,7 +39,7 @@ function App() {
           <Route path="medicalrecord"   element={<MedicalRecord />} />
           <Route path="patient-summary" element={<PatientSummary />} />
           <Route path="/Patientinfo" element={<Patientinfo/>} />       
-
+          <Route path="/inpatientadmission" element={<InpatientAdmission/>} />
         </Route>
       </Route>
     </Routes>
