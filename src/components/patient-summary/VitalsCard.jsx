@@ -38,6 +38,7 @@ const VitalsCard = ({ vitals }) => (
       icon={HeartPulse} 
       actionText="View Flowsheet" 
       iconColor="text-pink-500"
+      iconBg="bg-pink-50"
     />
     <div className="grid grid-cols-2 gap-4">
       {vitals?.map((v, i) => (

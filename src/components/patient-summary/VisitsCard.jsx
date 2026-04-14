@@ -10,6 +10,7 @@ const VisitsCard = ({ visits }) => (
       icon={History} 
       actionText="View Timeline" 
       iconColor="text-orange-500"
+      iconBg="bg-orange-50"
     />
     <div className="space-y-6">
       {visits?.map((item, idx) => (

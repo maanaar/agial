@@ -11,6 +11,7 @@ const AllergiesCard = ({ allergies }) => (
       icon={AlertTriangle} 
       actionText="Update" 
       iconColor="text-red-500"
+      iconBg="bg-red-50"
     />
     <div className="space-y-6">
       {allergies?.map((item, idx) => (

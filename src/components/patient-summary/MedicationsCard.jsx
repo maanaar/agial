@@ -11,6 +11,7 @@ const MedicationsCard = ({ medications }) => (
       icon={Link} 
       actionText="View All" 
       iconColor="text-emerald-500"
+      iconBg="bg-emerald-50"
     />
     <div className="space-y-6">
       {medications?.map((item, idx) => (

@@ -11,6 +11,7 @@ const DiagnosticsCard = ({ diagnostics }) => (
       icon={Microscope} 
       actionText="Lab Results" 
       iconColor="text-blue-500"
+      iconBg="bg-blue-50"
     />
     <div className="space-y-5">
       {diagnostics?.map((item, idx) => (
