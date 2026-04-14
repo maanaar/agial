@@ -16,8 +16,8 @@ const AllergiesCard = ({ allergies }) => (
       {allergies?.map((item, idx) => (
         <div key={idx} className={`flex justify-between items-start ${idx > 0 ? 'border-t border-gray-50 pt-5' : ''}`}>
           <div className="flex gap-3">
-            <div className={`mt-1 p-1 rounded ${item.type === 'drug' ? 'bg-red-50 text-red-500' : 'bg-yellow-50 text-yellow-600'}`}>
-              <ShieldAlert size={16} />
+            <div className={`mt-1 font-medium ${item.type === 'drug' ? 'text-red-500' : 'text-yellow-600'}`}>
+              <ShieldAlert size={18} />
             </div>
             <div>
               <h5 className="font-bold text-gray-800 text-sm uppercase tracking-wide">{item.name}</h5>

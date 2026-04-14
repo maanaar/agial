@@ -16,8 +16,8 @@ const MedicationsCard = ({ medications }) => (
       {medications?.map((item, idx) => (
         <div key={idx} className={`flex justify-between items-start ${idx > 0 ? 'border-t border-gray-50 pt-5' : ''}`}>
           <div className="flex gap-3">
-            <div className="mt-1 p-1 bg-emerald-50 text-emerald-500 rounded">
-              {item.iconType === 'percent' ? <Percent size={16} /> : <Pill size={16} />}
+            <div className="mt-1 text-emerald-500 font-medium">
+              {item.iconType === 'percent' ? <Percent size={18} /> : <Pill size={18} />}
             </div>
 
             <div>
