@@ -10,7 +10,7 @@ export default defineConfig(({ command }) => ({
 
   build: {
     // Output directly into the Odoo addon's static folder.
-    outDir: 'C:/Users/PC/addons17/agial_17/static/app',
+    outDir: '/addons17/agial_17/static/app',
     emptyOutDir: true,
   },
 
