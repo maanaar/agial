@@ -12,7 +12,7 @@ function Row({ icon, primary, secondary }) {
   )
 }
 
-export function BookingSummary({ summary }) {
+export function BookingSummary({ summary, onConfirm, confirming }) {
   const { patientName, phone, specialty, doctor, date, timeSlot, fee, duration, category } = summary
 
   const formattedDate = date
@@ -73,13 +73,15 @@ export function BookingSummary({ summary }) {
       </div>
 
       <button
+        onClick={onConfirm}
+        disabled={!patientName || !phone || confirming}
         className={`w-full py-3 rounded-xl text-white text-sm font-semibold transition-all
-          ${patientName && phone && specialty && (timeSlot || true)
+          ${patientName && phone && !confirming
             ? 'bg-teal-600 hover:bg-teal-700'
             : 'bg-gray-200 text-gray-400 cursor-not-allowed'
           }`}
       >
-        Confirm Booking
+        {confirming ? 'Saving…' : 'Confirm Booking'}
       </button>
     </div>
   )

@@ -47,7 +47,9 @@ export default function Inputs({
   placeholder,
   unit,
   type,
-  disabled
+  disabled,
+  value,
+  onChange
 }) {
 
   return (
@@ -56,29 +58,30 @@ export default function Inputs({
         type={type}
         className=" disabled:bg-gray-100 w-full px-2.5 py-1.5 text-sm text-gray-900 bg-transparent border-none outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none "
         placeholder={placeholder}
-       disabled={disabled}
+        disabled={disabled}
+        value={value}
+        onChange={onChange}
       />
       {
         unit && <span className="px-2.5 py-1.5 text-sm text-gray-500 border-l border-gray-200 bg-gray-50 select-none">{unit}</span>
       }
-      
+
     </div>
   );
 }
-export function Textarea({placeholder}) {
+export function Textarea({placeholder, value, onChange}) {
   return (
      <div className="w-full inline-flex items-center border border-gray-300 rounded-md bg-white overflow-hidden focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-200">
       <textarea
         className="w-full px-2.5 py-1.5 text-sm text-gray-900 bg-transparent border-none outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
         placeholder={placeholder}
         rows={5}
-          onChange={(e) => {
-    e.target.style.height = "auto";
-    e.target.style.height = e.target.scrollHeight + "px";
-  }}
+        value={value}
+        onChange={onChange ?? ((e) => {
+          e.target.style.height = "auto";
+          e.target.style.height = e.target.scrollHeight + "px";
+        })}
       />
-      
-      
     </div>
   )
 }

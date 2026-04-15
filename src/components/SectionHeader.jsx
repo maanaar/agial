@@ -14,11 +14,11 @@ export default function SectionHeader({ header, tx , border, text}) {
     </div>
   );
 }
-export function SectionFooter({text,bg,hoverbg,tx,text2,bg2,hoverbg2,tx2}) {
+export function SectionFooter({text,bg,hoverbg,tx,text2,bg2,hoverbg2,tx2,onClear,onSave}) {
       return (
     <div className="m-4 mt-0 flex items-center justify-end gap-2 border border-t-0 border-gray-200 rounded-md rounded-t-none px-4 py-3 bg-gray-50 cursor-pointer  transition">
-   <Buttons text={text} bg={bg} hoverbg={hoverbg} tx={tx}/>
-   <Buttons text={text2} bg={bg2} hoverbg={hoverbg2} tx={tx2}/>
+   <Buttons text={text} bg={bg} hoverbg={hoverbg} tx={tx} onClick={onClear}/>
+   <Buttons text={text2} bg={bg2} hoverbg={hoverbg2} tx={tx2} onClick={onSave}/>
     </div>
   );
 } 

@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { flushSync } from 'react-dom'
 import { usePatient } from '../../context/PatientContext'
 
 // Background colors mapped from Odoo's clinic_color field (1–11)
@@ -55,8 +56,8 @@ export function ClinicCard({ clinic }) {
     ? doctor.image
     : `https://ui-avatars.com/api/?name=${encodeURIComponent(doctor?.name || 'D')}&size=40&background=94a3b8&color=fff`
 
-  function openConsultation(patient) {
-    setPatient(patient)
+  function openConsultation(p) {
+    flushSync(() => setPatient(p))
     navigate('/consultationform')
   }
 

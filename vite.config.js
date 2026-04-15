@@ -10,7 +10,7 @@ export default defineConfig(({ command }) => ({
 
   build: {
     // Output directly into the Odoo addon's static folder.
-    outDir: 'C:/Users/PC/extra-addons/agial_17/static/app',
+    outDir: 'C:/Users/PC/addons17/agial_17/static/app',
     emptyOutDir: true,
   },
 
@@ -21,9 +21,10 @@ export default defineConfig(({ command }) => ({
 
   server: {
     proxy: {
-      '/id_scanner': {
+      '/agial/id_scanner': {
         target: 'http://209.38.41.253:8006',
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/agial/, ''),
       },
     },
   },

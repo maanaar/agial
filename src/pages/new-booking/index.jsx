@@ -164,6 +164,8 @@ export function NewBooking() {
   const [timeSlot,    setTimeSlot]    = useState('')
   const [source,      setSource]      = useState('')
   const [notes,       setNotes]       = useState('')
+  const [confirming,  setConfirming]  = useState(false)
+  const [bookingError, setBookingError] = useState('')
 
   // fetch options from Odoo, fall back to Agial demo data
   useEffect(() => {
@@ -185,6 +187,42 @@ export function NewBooking() {
     setDoctorId('')
   }
 
+  async function handleConfirm() {
+    if (!patientName || !phone) return
+    setConfirming(true)
+    setBookingError('')
+    try {
+      const body = {
+        patient_name: patientName,
+        phone,
+        national_id: nationalId,
+        address,
+        clinic_id: clinicId ? Number(clinicId) : null,
+        doctor_id: doctorId ? Number(doctorId) : null,
+        date: apptDate,
+        time_slot: timeSlot,
+        source,
+        notes,
+      }
+      const res = await fetch('/agial/booking/create', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+      const data = res.ok ? await res.json() : null
+      if (data?.success) {
+        navigate(-1)
+      } else {
+        setBookingError(data?.error || 'Failed to save booking.')
+      }
+    } catch (err) {
+      setBookingError('Network error. Please try again.')
+    } finally {
+      setConfirming(false)
+    }
+  }
+
   async function handleScanId(e) {
     const file = e.target.files[0]
     if (!file) return
@@ -193,7 +231,7 @@ export function NewBooking() {
     try {
       const form = new FormData()
       form.append('file', file, file.name)
-      const res = await fetch('/id_scanner', { method: 'POST', body: form })
+      const res = await fetch('/agial/id_scanner', { method: 'POST', credentials: 'include', body: form })
       if (!res.ok) throw new Error('Scanner returned ' + res.status)
       const json = await res.json()
       const data = json.extracted_data || {}
@@ -405,7 +443,10 @@ export function NewBooking() {
           </div>
 
           {/* ── Summary ── */}
-          <BookingSummary summary={summary} />
+          {bookingError && (
+            <p className="text-xs text-red-500 text-right">{bookingError}</p>
+          )}
+          <BookingSummary summary={summary} onConfirm={handleConfirm} confirming={confirming} />
         </div>
       </main>
     </div>
